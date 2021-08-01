@@ -1,9 +1,20 @@
 import React, { useState } from 'react';
 import "./App.css";
 
+function Modal() {
+  return (
+    <div className="modal">
+      <h2>제목</h2>
+      <p>날짜</p>
+      <p>상세내용</p>
+    </div>
+  )
+}
+
 function App() {
   let [postName, setPostName] = useState(['1번째 글', '2번째 글', '3번째 글']);
   let [likeNum, setLikeNum] = useState(0);
+  let [visible, setVisiblity] = useState(false);
 
   function changeName(postNum) {
     let newPostName = [...postName];
@@ -41,12 +52,13 @@ function App() {
 
       <button onClick={() => { changeName(0) }}>change first post name</button><br />
       <button onClick={() => { sortPosts(0) }}>Sort Posts</button>
+      <button onClick={() => { setVisiblity(!visible) }}>Open/Close Modal</button>
 
-      <div className="modal">
-        <h2>제목</h2>
-        <p>날짜</p>
-        <p>상세내용</p>
-      </div>
+      {
+        visible === true
+          ? <Modal />
+          : null
+      }
     </div>
   );
 }
