@@ -34,6 +34,17 @@ function App() {
     setLikeNum(newLike);
   }
 
+  function addPost(nameOfPost) {
+    // 새로운 글을 하나 만들어줌
+    let newPostName = [...postName];
+    newPostName.push(nameOfPost);
+    setPostName(newPostName);
+
+    let newLike = [...likeNum];
+    newLike.push(0);
+    setLikeNum(newLike);
+  }
+
   function sortPostsByName() {
     // 게시글 이름에 따라 정렬
     let newPostName = [...postName];
@@ -46,14 +57,18 @@ function App() {
       <div className="black-nav">
         <div>Mini Blog</div>
       </div>
-
-      <input onChange={(e) => { setInputData(e.target.value) }} />
+      
+      <div className="publish">
+        <h2>글 발행</h2>
+        <input onChange={(e) => { setInputData(e.target.value) }}/>
+        <button onClick={()=>{addPost(inputData)}}>저장</button>
+      </div>
 
       {
         postName.map(function (posts, i) {
           // postName에 저장된 게시글들을 반복문으로 나타내주는 부분
           return (
-            <div className="list">
+            <div className="list" key={i}>
               <h3 onClick={() => { setCurrentPostNum(i) }}>{posts}<span onClick={() => { doLike(i) }}>👍</span>{likeNum[i]}</h3>
               <p>2월 7일 발행</p>
               <hr />
