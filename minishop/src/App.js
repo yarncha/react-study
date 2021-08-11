@@ -50,7 +50,7 @@ function App() {
 
       <Switch>
         <Route path="/detail/:id">
-          <Detail shoes={shoes}/>
+          <Detail shoes={shoes} />
         </Route>
 
         <Route path="/">
