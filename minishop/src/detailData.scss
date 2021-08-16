@@ -1,25 +1,23 @@
-@mixin func() {
-  background: black;
-}
-
-.black-element {
-  @include func();
-}
-
-.my-alert {
-  background: #eeeeee;
+@mixin alert-style($background-color: #eeeeee) {
+  background: $background-color;
   padding: 15px;
   border-radius: 5px;
   max-width: 500px;
   width: 100%;
   margin: auto;
+  font-weight: bold;
 }
 
-.my-alert2 {
-  @extend .my-alert;
-  background: yellow;
+.my-alert {
+  @include alert-style(rgb(224, 120, 120));
 }
 
 .my-alert p {
   margin-bottom: 0;
+}
+
+// extend 연습
+.my-alert2 {
+  @extend .my-alert;
+  background: yellow;
 }
