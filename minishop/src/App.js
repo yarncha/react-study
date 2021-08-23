@@ -2,6 +2,7 @@ import './App.css';
 import React, { useState } from 'react';
 import { Navbar, NavDropdown, Container, Nav, Button } from 'react-bootstrap';
 import { Link, Route, Switch } from 'react-router-dom';
+import axios from 'axios';
 
 import { ShoesData } from './data.js';
 import { Detail } from './detailData.js';
@@ -63,6 +64,11 @@ function App() {
                   );
                 })
               }
+              <button className="btn btn-primary" onClick={() => {
+                axios.get('https://codingapple1.github.io/shop/data2.json')
+                  .then((result) => { console.log(result.data) })
+                  .catch(() => { alert("실패") })
+              }}>Show more...</button>
             </div>
           </div>
         </Route>
