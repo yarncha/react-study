@@ -13,3 +13,24 @@
   font-weight: bold;
   text-shadow: -2px 0px black, 0px 2px black, 2px 0px black, 0px -2px black;
 }
+
+.loadingPopUp {
+  position: fixed;
+  z-index: 1;
+  background-color: rgba(46, 41, 41, 0.5);
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.loadingPopUp > p {
+  background-color: cornflowerblue;
+  width: 100px;
+  border-radius: 5px;
+  margin-top: 40%;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  text-align: center;
+  font-weight: bold;
+}

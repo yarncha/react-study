@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import styled from 'styled-components';
+
 import './detailData.scss';
 
 let Box = styled.div`

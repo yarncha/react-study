@@ -1,9 +1,9 @@
-import './App.css';
 import React, { useState } from 'react';
 import { Navbar, NavDropdown, Container, Nav, Button } from 'react-bootstrap';
 import { Link, Route, Switch } from 'react-router-dom';
 import axios from 'axios';
 
+import './App.css';
 import { ShoesData } from './data.js';
 import { Detail } from './detailData.js';
 
@@ -20,6 +20,7 @@ function ShoesInfo(props) {
 
 function App() {
   let [shoes, setShoes] = useState(ShoesData);
+  let [loading, setLoading] = useState(false);
 
   return (
     <div className="App">
@@ -64,10 +65,30 @@ function App() {
                   );
                 })
               }
+
+              {
+                loading === true
+                  ? (<div className="loadingPopUp">
+                    <p className="mx-auto">Loading...</p>
+                  </div>)
+                  : null
+              }
+
               <button className="btn btn-primary" onClick={() => {
+                setLoading(true);
+                // 로딩중 UI 띄우기
+
                 axios.get('https://codingapple1.github.io/shop/data2.json')
-                  .then((result) => { console.log(result.data) })
-                  .catch(() => { alert("실패") })
+                  .then((result) => {
+                    setShoes([...shoes, ...result.data]);
+                    setLoading(false);
+                    // 로딩중 UI 없애기
+                  })
+                  .catch(() => {
+                    alert("실패")
+                    setLoading(false);
+                    // 로딩중 UI 없애기
+                  })
               }}>Show more...</button>
             </div>
           </div>
