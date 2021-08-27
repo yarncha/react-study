@@ -18,8 +18,12 @@ function ShoesInfo(props) {
   );
 }
 
+export let stockContext = React.createContext();
+// 컴포넌트 중복 사용 시 props를 여러번 사용하지 않기 위해 context 사용
+
 function App() {
   let [shoes, setShoes] = useState(ShoesData);
+  let [stock, setStock] = useState([10, 11, 12]);
   let [loading, setLoading] = useState(false);
 
   return (
@@ -46,7 +50,9 @@ function App() {
 
       <Switch>
         <Route path="/detail/:id">
-          <Detail shoes={shoes} />
+          <stockContext.Provider value={stock}>
+            <Detail shoes={shoes} />
+          </stockContext.Provider>
         </Route>
 
         <Route path="/">

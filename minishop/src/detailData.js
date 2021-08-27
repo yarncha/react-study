@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import styled from 'styled-components';
 
+import { stockContext } from './App.js';
 import './detailData.scss';
 
 let Box = styled.div`
@@ -14,18 +15,25 @@ let TitleHeader = styled.h4`
     color : ${props => props.h4Color};
 `;
 
+function Info() {
+    return (
+        <p>재고 : { }</p>
+    )
+}
+
 function Detail(props) {
     let [alertVisiblity, setVisiblity] = useState(true);
     let history = useHistory();
     let { id } = useParams();
+    let stock = useContext(stockContext);
 
     useEffect(() => {
         let timer = setTimeout(() => {
             setVisiblity(false);
         }, 2000);
 
-        return ()=>{ clearTimeout(timer) }
-    }, [ ]);
+        return () => { clearTimeout(timer) }
+    }, []);
 
     let target = props.shoes.find(function (shoe) {
         return shoe.id == id;
@@ -54,8 +62,9 @@ function Detail(props) {
                     <h4 className="pt-5">{target.title}</h4>
                     <p>{target.content}</p>
                     <p>{target.price}</p>
-                    <button className="btn btn-danger">주문하기</button>
-                    <button onClick={() => { history.goBack() }} className="btn btn-danger">뒤로가기</button>
+                    <Info></Info>
+                    <button className="btn btn-danger" onClick={() => { props.setStock([9, 10, 11]) }}>주문하기</button>
+                    <button className="btn btn-danger" onClick={() => { history.goBack() }}>뒤로가기</button>
                 </div>
             </div>
         </div>
