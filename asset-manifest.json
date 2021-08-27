@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/react-build-test/static/css/main.bef985d6.chunk.css",
+    "main.js": "/react-build-test/static/js/main.8518b874.chunk.js",
+    "main.js.map": "/react-build-test/static/js/main.8518b874.chunk.js.map",
+    "runtime-main.js": "/react-build-test/static/js/runtime-main.6358a37a.js",
+    "runtime-main.js.map": "/react-build-test/static/js/runtime-main.6358a37a.js.map",
+    "static/js/2.8a19840d.chunk.js": "/react-build-test/static/js/2.8a19840d.chunk.js",
+    "static/js/2.8a19840d.chunk.js.map": "/react-build-test/static/js/2.8a19840d.chunk.js.map",
+    "static/js/3.08bfb255.chunk.js": "/react-build-test/static/js/3.08bfb255.chunk.js",
+    "static/js/3.08bfb255.chunk.js.map": "/react-build-test/static/js/3.08bfb255.chunk.js.map",
+    "index.html": "/react-build-test/index.html",
+    "static/css/main.bef985d6.chunk.css.map": "/react-build-test/static/css/main.bef985d6.chunk.css.map",
+    "static/js/2.8a19840d.chunk.js.LICENSE.txt": "/react-build-test/static/js/2.8a19840d.chunk.js.LICENSE.txt",
+    "static/media/App.css": "/react-build-test/static/media/background.739617fe.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.6358a37a.js",
+    "static/js/2.8a19840d.chunk.js",
+    "static/css/main.bef985d6.chunk.css",
+    "static/js/main.8518b874.chunk.js"
+  ]
+}
