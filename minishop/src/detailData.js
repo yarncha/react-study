@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useContext } from 'react';
+import { Nav } from 'react-bootstrap';
 import { useHistory, useParams } from 'react-router-dom';
 import styled from 'styled-components';
+import {CSSTransition} from 'react-transition-group';
 
 import { stockContext } from './App.js';
 import './detailData.scss';
@@ -21,8 +23,19 @@ function Info() {
     )
 }
 
+function TabContent(props) {
+    if (props.tab == 0) {
+        return <div>내용0</div>
+    } else if (props.tab == 1) {
+        return <div>내용1</div>
+    } else if (props.tab == 2) {
+        return <div>내용2</div>
+    }
+}
+
 function Detail(props) {
     let [alertVisiblity, setVisiblity] = useState(true);
+    let [tab, setTab] = useState(0);
     let history = useHistory();
     let { id } = useParams();
     let stock = useContext(stockContext);
@@ -41,6 +54,18 @@ function Detail(props) {
 
     return (
         <div className="container">
+            <div>
+                <Nav variant="tabs" defaultActiveKey="link-0">
+                    <Nav.Item>
+                        <Nav.Link eventKey="link-0" onClick={() => { setTab(0) }}>Active</Nav.Link>
+                    </Nav.Item>
+                    <Nav.Item>
+                        <Nav.Link eventKey="link-1" onClick={() => { setTab(1) }}>Option 2</Nav.Link>
+                    </Nav.Item>
+                </Nav>
+                <TabContent tab={tab}></TabContent>
+            </div>
+
             <Box>
                 <TitleHeader h4Color="pink">Shoes</TitleHeader>
                 <TitleHeader h4Color="skyblue">Detail Page</TitleHeader>
@@ -69,6 +94,8 @@ function Detail(props) {
             </div>
         </div>
     )
-};
+}
+
+
 
 export { Detail }
